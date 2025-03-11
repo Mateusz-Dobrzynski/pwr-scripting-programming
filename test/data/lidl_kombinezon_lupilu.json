@@ -1,0 +1,11 @@
+{
+  "url": "https://www.lidl.pl/p/lupilu-kombinezon-przeciwdeszczowy-dzieciecy/p100365673",
+  "unit": "z\u0142",
+  "name": "Lidl kombinezon Lupilu",
+  "records": [
+    { "timestamp": 1729699200.0, "value": 59.9 },
+    { "timestamp": 1729785600.0, "value": 59.9 },
+    { "timestamp": 1729872000.0, "value": 59.9 }
+  ],
+  "xpath": "//div[@class='m-price__price']"
+}
