@@ -53,7 +53,7 @@ class PriceHistory:
         self.records.append(self._get_current_price_record())
 
     def _get_current_price_record(self) -> PriceRecord:
-        value = WebScraper().get_current_value(self.url, self.xpath)
+        value = WebScraper().get_news_items(self.url, self.xpath)
         current_timestamp = datetime.timestamp(datetime.now())
         return PriceRecord(current_timestamp, value)
 
