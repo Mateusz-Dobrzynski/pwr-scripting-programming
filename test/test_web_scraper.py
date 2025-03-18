@@ -1,4 +1,4 @@
-from liczyrzepa.web_scraper import WebScraper
+from news_scraping.web_scraper import WebScraper
 
 
 class TestWebScraper:
