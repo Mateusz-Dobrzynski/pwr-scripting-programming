@@ -9,16 +9,21 @@ class NewsItem:
         index: int,
         url_xpath: str,
         title_xpath: str,
-        image_xpath: str = "",
+        image_xpath: str | None = None,
     ):
         self.index = index
         self.url_xpath = url_xpath
-        self.url = self._get_url_from(element)
         self.title_xpath = title_xpath
-        self.title = self._get_title_from(element)
-        if image_xpath != "":
+        if element != None:
+            if url_xpath != None:
+                self.url = self._get_url_from(element)
+            if title_xpath != None:
+                self.title = self._get_title_from(element)
+        if image_xpath:
             self.image_xpath = image_xpath
             self.image_url = self._get_image_url_from(element)
+        else:
+            self.image_url = None
 
     def _get_url_from(self, element):
         return element.xpath(self.url_xpath)[self.index].get("href")
