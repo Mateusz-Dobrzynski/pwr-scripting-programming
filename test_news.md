@@ -1,37 +1,3 @@
-from markdown_generator import MarkdownGenerator
-from web_scraper import WebScraper
-from os import getcwd
-
-
-class TestMarkdownGenerator:
-    def saved_file_should_have_proper_content(self):
-        # GIVEN
-        url = "https://web.archive.org/web/20250222063945/https://niebezpiecznik.pl/"
-        main_xpath = "//div[contains(@id,'post')]"
-        url_xpath = "//div[contains(@id, 'post')]//div[@class='title']/h2/a"
-        title_xpath = url_xpath
-        image_xpath = (
-            "//div[contains(@id, 'post')]//img[contains(@class, 'wp-post-image')]"
-        )
-        output_path = f"{getcwd()}/test_output_file.md"
-
-        # WHEN
-        scraper = WebScraper(
-            url,
-            main_xpath,
-            url_xpath,
-            title_xpath,
-            image_xpath,
-        )
-        items = scraper.get_news_items()
-        MarkdownGenerator(items).save_to(output_path)
-
-        # THEN
-        file = open(output_path)
-        content = file.read()
-        assert (
-            content
-            == """
 # News!
 
 ## [Uruchamiamy 2 dniowe, praktyczne szkolenie z OSINT-u!](https://web.archive.org/web/20250222063945/https://niebezpiecznik.pl/post/uruchamiamy-2-dniowe-praktyczne-szkolenie-z-osint-u/)
@@ -97,6 +63,3 @@ class TestMarkdownGenerator:
 ## [⚠️ Uwaga klienci ING, Paribas, Aliora i Santandera](https://web.archive.org/web/20250222063945/https://niebezpiecznik.pl/post/uwaga-klienci-ing-3/)
 <img src="https://web.archive.org/web/20250222063945im_/https://niebezpiecznik.pl/wp-content/uploads/2024/10/cyberalert-ing-600x337.jpg">
 
-
-"""
-        )
