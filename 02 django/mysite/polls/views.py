@@ -48,7 +48,6 @@ def save(request):
             correspondingToken = Token.objects.get(token=token)
             return HttpResponse("You are not allowed to vote again")
         except Exception as e:
-            print("bajojajo", e)
             for item in request.GET:
                 if item != "csrfmiddlewaretoken" and item != "token":
                     selected_choice = Choice.objects.get(choice_text=request.GET[item])
