@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+integrity="sha384-
+ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+crossorigin="anonymous">
+<title>Dashboard</title>
+</head>
+<body>
+{% if questions %}
+<div class="d-flex align-items-center justify-content-center" style="height:100vh;">
+<ul>
+{% for question in questions %}
+    <li>
+        {{ question.text }}
+        <ul>
+            {% for choice in question.choices %}
+            <li>
+                {{ choice.choice_text }}: {{ choice.votes }} vote(s)
+            </li>
+            {% endfor %}
+        </ul>
+    </li>
+{% endfor %}
+</ul>
+</div>
+{% else %}
+<p>No questions are available.</p>
+{% endif %}
+</body>
+</html>
