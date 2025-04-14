@@ -1,2 +1,3 @@
 02 django/mysite/db.sqlite3
 *.pyc
+.vscode
